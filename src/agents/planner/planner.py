@@ -1,3 +1,4 @@
+import os
 from jinja2 import Environment, BaseLoader
 
 from src.llm import LLM
@@ -6,7 +7,7 @@ PROMPT = open("src/agents/planner/prompt.jinja2").read().strip()
 
 from autogen import UserProxyAgent, AssistantAgent 
 llm_config = {
-    "config_list": [{"model": "gpt-3.5-turbo-0125", "api_key": ""}],
+    "config_list": [{"model": "gpt-3.5-turbo-0125", "api_key": os.getenv("OPENAI_API_KEY")}],
     "temperature": 0.5,
     "timeout": 300,
 }
